@@ -1,8 +1,9 @@
 name: PR testing
 
 on:
-  pull_request:
-    branches: [ rewrite ]
+  push:
+    branches: 
+      - main
 
 jobs:
   build:
