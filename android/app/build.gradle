@@ -51,22 +51,10 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
-    signingConfigs {
-        release {
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
-            storeFile file(keystoreProperties['storeFile'])
-            storePassword keystoreProperties['storePassword']
-        }
-    }
-
     flavorDimensions "app"
     productFlavors {
-        def debugSigning = signingConfigs.debug
-        def releaseSigning = signingConfigs.release
         
         dev {
-            signingConfig debugSigning
             applicationId = "com.potatoproject.notes.dev"
             dimension "app"
             manifestPlaceholders = [
@@ -75,7 +63,6 @@ android {
         }
         
         ci {
-            signingConfig debugSigning
             applicationId = "com.potatoproject.notes.ci"
             dimension "app"
             manifestPlaceholders = [
@@ -84,7 +71,6 @@ android {
         }
         
         production {
-            signingConfig releaseSigning
             applicationId = "com.potatoproject.notes"
             dimension "app"
             manifestPlaceholders = [
